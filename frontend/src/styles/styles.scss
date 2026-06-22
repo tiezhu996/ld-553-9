@@ -12,5 +12,6 @@ th, td { padding: 13px 14px; border-bottom: 1px solid $line; text-align: left; w
 th { color: $muted; font-size: 12px; font-weight: 700; }
 .grid { display: grid; gap: 16px; }
 .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.grid-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .split { display: grid; grid-template-columns: 3fr 2fr; gap: 18px; min-height: 72vh; }
-@media (max-width: 900px) { .grid-4, .split { grid-template-columns: 1fr; } .page { padding: 14px; } }
+@media (max-width: 900px) { .grid-4, .grid-5, .split { grid-template-columns: 1fr; } .page { padding: 14px; } }

@@ -21,6 +21,7 @@ export class ApiService {
   patchPileStatus(id: number, status: string): Observable<ChargingPile> { return this.http.patch<ChargingPile>(`${environment.apiBaseUrl}/charging-piles/${id}/status/`, { status }); }
   listOrders(filters: Record<string, string> = {}): Observable<TripOrder[]> { return this.http.get<TripOrder[]>(`${environment.apiBaseUrl}/orders/`, { params: new HttpParams({ fromObject: filters }) }); }
   patchOrderStatus(id: number, status: string): Observable<TripOrder> { return this.http.patch<TripOrder>(`${environment.apiBaseUrl}/orders/${id}/status/`, { status }); }
+  cancelOrder(id: number): Observable<TripOrder> { return this.http.post<TripOrder>(`${environment.apiBaseUrl}/orders/${id}/cancel/`, {}); }
   dashboardOverview(): Observable<DashboardOverview> { return this.http.get<DashboardOverview>(`${environment.apiBaseUrl}/dashboard/overview/`); }
   orderTrend(): Observable<Array<{ day: string; count: number }>> { return this.http.get<Array<{ day: string; count: number }>>(`${environment.apiBaseUrl}/dashboard/order-trend/`); }
   revenueStats(): Observable<any> { return this.http.get(`${environment.apiBaseUrl}/dashboard/revenue-stats/`); }

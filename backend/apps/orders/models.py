@@ -20,6 +20,7 @@ class TripOrder(models.Model):
     fare = models.DecimalField(max_digits=10, decimal_places=2)
     status = models.CharField(max_length=20, choices=OrderStatus.choices, default=OrderStatus.PENDING)
     payment_status = models.CharField(max_length=20, choices=PaymentStatus.choices, default=PaymentStatus.UNPAID)
+    cancel_fee = models.DecimalField(max_digits=10, decimal_places=2, default=0)
     rating = models.IntegerField(null=True, blank=True)
     comment = models.CharField(max_length=500, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)

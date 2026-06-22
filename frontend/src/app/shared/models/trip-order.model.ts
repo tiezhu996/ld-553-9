@@ -18,4 +18,5 @@ export interface TripOrder {
   fare: string;
   status: OrderStatus;
   payment_status: PaymentStatus;
+  cancel_fee: string;
 }

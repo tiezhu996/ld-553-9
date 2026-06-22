@@ -17,6 +17,7 @@ class DashboardService:
             "vehicles_online": Vehicle.objects.filter(status=VehicleStatus.OPERATING).count(),
             "vehicles_total": Vehicle.objects.count(),
             "today_orders": TripOrder.objects.filter(created_at__date=today).count(),
+            "today_cancelled": TripOrder.objects.filter(created_at__date=today, status=OrderStatus.CANCELLED).count(),
             "today_revenue": TripOrder.objects.filter(created_at__date=today, payment_status=PaymentStatus.PAID).aggregate(total=Sum("fare"))["total"] or 0,
             "pile_utilization": round(used_piles / total_piles * 100, 2),
         }

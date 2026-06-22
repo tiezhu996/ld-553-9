@@ -31,6 +31,11 @@ class TripOrderViewSet(viewsets.ModelViewSet):
         order = OrderService.set_status(self.get_object(), request.data["status"], request.data.get("vehicle_id"))
         return response.Response(TripOrderSerializer(order).data)
 
+    @decorators.action(detail=True, methods=["post"])
+    def cancel(self, request, pk=None):
+        order = OrderService.cancel_order(self.get_object())
+        return response.Response(TripOrderSerializer(order).data)
+
     @decorators.action(detail=True, methods=["patch"])
     def pay(self, request, pk=None):
         return response.Response(TripOrderSerializer(OrderService.pay(self.get_object())).data)
